@@ -1,0 +1,13 @@
+fetch("http://localhost:3000/weather?city=Dhaka")
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.error) {
+      console.error("Error:", data.error);
+    } else {
+      console.log("Weather Data:", data);
+      console.log("City:", data.name);
+      console.log("Temperature:", data.main.temp, "°C");
+      console.log("Weather:", data.weather[0].description);
+    }
+  })
+  .catch((err) => console.error(err));

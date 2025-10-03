@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weathrix</title>
+    <link rel="stylesheet" href="weathrixMain.css">
+</head>
+<body>
+    <div class="slideshow" aria-hidden="true">
+        <div class="slide"style="background-image: url('https://images.unsplash.com/photo-1504386106331-3e4e71712b38?q=80&w=1974&auto=format&fit=crop');"></div>
+        <div class="slide"style="background-image: url('https://images.unsplash.com/photo-1624969772592-b5d9cad408f1?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+        <div class="slide"style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1974&auto=format&fit=crop');"></div>
+        <div class="slide"style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1974&auto=format&fit=crop');"></div>
+        <div class="slide"style="background-image: url('https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?q=80&w=1974&auto=format&fit=crop');"></div>
+        <div class="slide"style="background-image: url('https://images.unsplash.com/photo-1554738458-6c6ae81806fb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+    </div>
+    <div class="season-badge" aria-live="polite" aria-atomic="true"></div>
+    <h2>Weathrix</h2>
+    <div class="search-bar">
+        <button class="icon-btn">➕</button>
+        <input type="text" id="searchInput" placeholder="What you are planing to do?">
+        <button id="micBtn" class="icon-btn">🎤</button>
+        <button id="searchBtn" class="icon-btn">🔍</button>
+    </div>
+    <div id="manualLocation">
+        <input type="text" id="city" placeholder="Enter city name">
+        <button onclick="getWeatherByCity()">Get Weather</button>
+    </div>
+    <script src="weathrixMain.js"></script>
+</body>
+</html>

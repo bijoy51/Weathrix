@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>🌤️ Weather Risk — NASA POWER</title>
+    <!-- Leaflet (Map) -->
+     
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+    />
+    <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+    defer
+    ></script>
+    <!-- Chart.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js" defer></script>
+    <link rel="stylesheet" href="weathrixDeshboard.css">
+</head>
+<body>
+    <header>
+        <div id="google_translate_element"></div>
+        <div class="wrap row" style="justify-content:space-between">
+            <div class="brand">
+                <div class="logo" aria-hidden="true"></div>
+                <div>
+                    <h1>Weathrix</h1>
+                    <div class="muted" style="font-size:12px">Powered by NASA POWER • OSM</div>
+                </div>
+            </div>
+            <div class="muted" style="font-size:12px">A science-first, map-centric UI</div>
+        </div>
+    </header>
+  
+    <div class="card pad stack" id="adviceContainer">
+        <p id="adviceText"></p>
+        <button id="speakBtn">🔊 Listen</button>
+    </div>
+  
+    <main class="wrap grid">
+        <!-- Controls -->
+         
+        <section class="card pad stack" aria-label="Controls">
+            <h2 style="margin:0 0 6px 0;font-size:16px">Plan your day</h2>
+            <label class="stack">
+                <span class="muted" style="font-size:12px">Location (city/place or "lat, lon")</span>
+                <input id="inpLocation" placeholder="Dhaka, Bangladesh" />
+            </label>
+            <label class="stack">
+                
+                <input id="inpDate" type="hidden"/>
+            </label>
+            <marquee style="color: red;" direction="left">If you want to travel in the future and see the 
+                weather for those days, enter the start and end dates and press the 
+                "Check Risk" button.
+            </marquee>            
+            <label class="stack">
+                <span class="muted" style="font-size:12px">Start Date</span>
+                <input id="inpStartDate" type="date" />
+            </label>
+            <label class="stack">
+                <span class="muted" style="font-size:12px">End Date</span>
+                <input id="inpEndDate" type="date" />
+            </label>            
+      
+            <label class="stack">
+                <span class="muted" style="font-size:12px">Voice Input</span>
+                <div class="row" style="gap:6px">
+                    <input id="inpVoice" placeholder="Say something..." />
+                    <button id="btnMic" title="Speak">🎙️</button>
+                </div>
+            </label>
+            <div class="row" style="gap:10px">
+                <button id="btnRun">Check Risk</button>
+                <button id="btnGeo" title="Use my device location" style="background:linear-gradient(180deg,#18b892,#0f8b72);border:1px solid #18a485">Use my location</button>
+            </div>
+            <div id="err" class="error" style="display:none"></div>
+            <div class="hr"></div>
+            <div class="note">Data: T2M (°C), RH2M (%), WS2M (m/s), PRECTOTCORR (mm/day) — NASA POWER (daily).</div>
+        </section>
+    
+        <!-- Overview, Map, Charts -->
+    
+        <section class="stack">
+            <div id="weatherCard" class="card pad">
+                <div class="row" style="justify-content:space-between;align-items:flex-start">
+                    <div>
+                        <div id="place" font-weight:700;font-size:18px>📍 Dhaka, Bangladesh</div>
+                        <div id="dateView" class="muted" style="font-size:12px"></div>
+                    </div>
+                    <div class="kpi">
+                        <div id="kpiTemp" class="big">--°C</div>
+                        <div class="small">Feels <span id="kpiApp">--°C</span></div>
+                    </div>
+                </div>
+                <div class="badges" style="margin-top:12px">
+                    <div class="badge"><span>Heat</span><span id="bHeat" class="chip">-</span></div>
+                    <div class="badge"><span>Cold</span><span id="bCold" class="chip">-</span></div>
+                    <div class="badge">
+                        <span>Wind</span>
+                        <span id="bWind" class="chip">-</span>
+                        <span id="kpiWind" class="chip">-</span>
+                    </div>
+                    <div class="badge"><span>Rain</span><span id="bRain" class="chip">-</span></div>
+                    <div class="badge"><span>Comfort</span><span id="bComfort" class="chip low">-</span></div>
+                </div>
+            </div>
+      
+            <div class="card pad">
+                <div id="map" class="map" role="region" aria-label="Map"></div>
+            </div>
+      
+            <div class="card pad">
+                <h3 style="margin:0 0 10px 0;font-size:16px">Next 5-day (Forecast) Temperature & Apparent (°C)</h3>
+                <canvas id="lineChart" height="220"></canvas>
+            </div>
+      
+            <div class="card pad">
+                <h3 style="margin:0 0 10px 0;font-size:16px">Next 5-day (Forecast) Rainfall (mm/day)</h3>
+                <canvas id="barChart" height="220"></canvas>
+            </div>
+        </section>
+
+    </main>
+    <div class="card pad stack" id="dataTable">
+
+    </div>
+  
+    <footer>© <span id="year"></span> Weather Risk — NASA POWER</footer>
+    <script src="weathrixDeshboard.js"></script>
+    <script src="weathrixMerra.js"></script>
+</body>
+</html>
