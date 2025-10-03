@@ -3,9 +3,6 @@ For a better explanation of our code, please read the README.md file.
 Note:
 OPENWEATHER_KEY:eb85f6c8b64f24200ce985073dada23f
 
-
- remove 9 from authorization key
-
 # 🌤️ Weathrix — Weather Risk Dashboard
 
 **Weathrix** is a science-first, map-centric weather risk dashboard powered by **NASA POWER (MERRA-2)**, **OpenStreetMap**, and **Chart.js**.  
