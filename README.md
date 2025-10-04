@@ -1,6 +1,7 @@
 website link: https://chimerical-llama-8ac53c.netlify.app/
 
 url :https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M,RH2M,WS2M,PRECTOTCORR&start=${s}&end=${e}&latitude=${lat}&longitude=${lon}&format=JSON&community=RE
+
 NASA POWER (Prediction Of Worldwide Energy Resources) API  endpoint.
 Main source: MERRA-2 reanalysis dataset (1981–Present).
 
